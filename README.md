@@ -46,3 +46,18 @@ player 2 hp goes down by 10
 ![1](./Screenshots/User story 3_1.png)
 
 ![2](./Screenshots/User story 3_2.png)
+
+---
+
+```
+As Player 1,
+So I can start to win a game of Battle,
+I want my attack to reduce Player 2's HP by 10
+```
+
+player 1 clicks attack
+- in Player class, #attack is called with 1 argument (player 2)
+-
+- #attack reduces player 2's hitpoints by using player 2's hitpoint attr_writer
+
+player 2 hp goes down by 10

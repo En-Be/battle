@@ -3,40 +3,33 @@ require_relative 'lib/player'
 
 class Battle < Sinatra::Base
 
-  enable :sessions
+  #enable :sessions
 
   get '/test' do
     "Testing infrastructure working"
   end
 
   get '/' do
-    session[:p2hp] = 100
     erb (:index)
   end
 
   get '/play' do
-    @name1 = $player_1_name
-    @name2 = $player_2_name
-    @p2hp = session[:p2hp]
-    p session
+    @name1 = $player_1.name
+    @name2 = $player_2.name
+    @p2hp = $player_2.hp
+    #p session
     erb (:play)
   end
 
   post '/names' do
-    $player_1_name = Player.new(params[:name1]).name
-    $player_2_name = Player.new(params[:name2]).name
-
-    # session[:name1] = params[:name1]
-    # session[:name2] = params[:name2]
+    $player_1 = Player.new(params[:name1])
+    $player_2 = Player.new(params[:name2])
     redirect ('/play')
-
   end
 
   post '/attack' do
-    # p $player_1_name
-    # p $player_2_name
-    session[:p2hp] -= 10
+    $player_1.attack($player_2)
     redirect ('/play')
-
   end
+
 end
