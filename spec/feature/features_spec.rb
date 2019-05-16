@@ -14,20 +14,20 @@ feature "battle" do
   end
 
   scenario "play stores names" do
-    visit('/')
-    fill_in('name1', with: 'Ol pal')
-    fill_in('name2', with: 'ol buddy')
-    click_button("submit")
+    sign_in_and_play
     expect(page).to have_content 'Ol pal'
-    expect(page).to have_content 'ol buddy'
+    expect(page).to have_content 'Ol buddy'
   end
 
   scenario "displays player 2's hit points" do
-    visit('/')
-    fill_in('name1', with: 'Ol pal')
-    fill_in('name2', with: 'Ol buddy')
-    click_button("submit")
+    sign_in_and_play
     expect(page).to have_content 'Ol buddy: 100/100 HP'
+  end
+
+  scenario "player 1 attacks player 2: player 2 hit points reduce by 10" do
+    sign_in_and_play
+    click_button('Attack!')
+    expect(page).to have_content 'Ol buddy: 90/100 HP'
   end
 
   # next test would include an erb file and check that is contains the params in body

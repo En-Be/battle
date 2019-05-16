@@ -9,7 +9,16 @@ class Battle < Sinatra::Base
   end
 
   get '/' do
+    session[:p2hp] = 100
     erb (:index)
+  end
+
+  get '/play' do
+    @name1 = session[:name1]
+    @name2 = session[:name2]
+    @p2hp = session[:p2hp]
+    p session
+    erb (:play)
   end
 
   post '/names' do
@@ -20,12 +29,9 @@ class Battle < Sinatra::Base
 
   end
 
-  get '/play' do
-    @name1 = session[:name1]
-    @name2 = session[:name2]
-    @p2hp = 100
-    p session
-    erb (:play)
-  end
+  post '/attack' do
+    session[:p2hp] -= 10
+    redirect ('/play')
 
+  end
 end
