@@ -8,4 +8,8 @@ Object | Behaviours
 Players  |  
 Game  | input names
 
+![1](./Screenshots/User story 1_1.png)
+
+![2](./Screenshots/User story 1_2.png)
+![3](./Screenshots/User story 1_3.png)
 ---

@@ -8,6 +8,7 @@ require_relative '../app'
 #require 'capybara'
 require 'capybara/rspec'
 #require 'rspec'
+#require 'launchy'
 
 Capybara.app = Battle
 

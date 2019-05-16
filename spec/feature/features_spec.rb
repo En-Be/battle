@@ -20,6 +20,7 @@ feature "battle" do
     click_button("submit")
     expect(page).to have_content 'Ol pal'
     expect(page).to have_content 'ol buddy'
+    save_and_open_page
   end
 
   # next test would include an erb file and check that is contains the params in body
