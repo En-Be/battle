@@ -20,7 +20,14 @@ feature "battle" do
     click_button("submit")
     expect(page).to have_content 'Ol pal'
     expect(page).to have_content 'ol buddy'
-    save_and_open_page
+  end
+
+  scenario "displays player 2's hit points" do
+    visit('/')
+    fill_in('name1', with: 'Ol pal')
+    fill_in('name2', with: 'Ol buddy')
+    click_button("submit")
+    expect(page).to have_content 'Ol buddy: 100/100 HP'
   end
 
   # next test would include an erb file and check that is contains the params in body
